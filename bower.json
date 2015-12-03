@@ -1,0 +1,19 @@
+{
+  "name": "ng-easy-crud",
+  "version": "0.0.1",
+  "main": ".dist/ng-easy-crud.js",
+  "description": "Set of angular directives to make easy CRUD requests",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myszmen/ng-easy-crud.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "~1.2",
+    "angular-resource": "~1.2"
+  }
+}

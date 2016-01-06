@@ -3,11 +3,11 @@
 
     angular
         .module('ng-easy-crud')
-        .directive('ecrudList', ecrudList);
+        .directive('ecrudDetail', ecrudDetail);
     
-    ecrudList.$inject = ['Restangular'];
+    ecrudDetail.$inject = ['Restangular'];
 
-    function ecrudList(Restangular) {
+    function ecrudDetail(Restangular) {
         var directive = {
             restrict: 'E',
             transclude: true,
@@ -31,8 +31,8 @@
             function loadData() {
                 // loading = true for the use in template (eg show/hide sth)
                 scope.loading = true;
-                Restangular.all(getResourcePath(attrs)).getList().then(function(data) {
-                    scope.object_list = data;
+                Restangular.one(getResourcePath(attrs)).get().then(function(data) {
+                    scope.object = data;
                 })
             }
             scope.loadData();

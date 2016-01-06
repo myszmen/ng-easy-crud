@@ -5,7 +5,9 @@
         .module('ng-easy-crud')
         .directive('ecrudList', ecrudList);
     
-    function ecrudList() {
+    ecrudList.$inject = ['Restangular'];
+
+    function ecrudList(Restangular) {
         var directive = {
             restrict: 'E',
             transclude: true,
@@ -29,9 +31,7 @@
             function loadData() {
                 // loading = true for the use in template (eg show/hide sth)
                 scope.loading = true;
-            //    $resource(
-            //        getResourceUrl(attrs)
-            //    ).query(
+		
             }
         }
     }

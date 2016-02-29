@@ -5,13 +5,13 @@
         .module('ng-easy-crud')
         .directive('ecrudSearch', ecrudSearch);
     
-    ecrudSearch.$inject = ['ecrudLocation'];
+    ecrudSearch.$inject = ['$location'];
 
-    function ecrudSearch(ecrudLocation) {
+    function ecrudSearch($location) {
         var directive = {
             restrict: 'E',
-            //transclude: true,
-            //scope: {},
+            transclude: true,
+            scope: {},
             templateUrl: getTemplatePath,
             link: link
         };
@@ -22,13 +22,15 @@
         }
 
         function link(scope, element, attrs) {
-            scope.reload = reload;
-	    scope.query = ecrudLocation.getQuery()
+            scope.updateQuery = updateQuery;
+	        scope.search = $location.search().search
 
-            function reload() {
-		scope.query.page = 1;
-		ecrudLocation.updateQuery(scope.query);
-		scope.loadData();
+            function updateQuery() {
+                if(scope.search) {
+	                $location.search('search', scope.search);
+                } else {
+	                $location.search('search', null);
+                }
             }
         }
     }
